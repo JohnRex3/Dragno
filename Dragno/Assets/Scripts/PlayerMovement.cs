@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class Player : MonoBehaviour
+public class PlayerMovement : MonoBehaviour
 {
     [SerializeField] float playerRunSpeed = 5f;
     [SerializeField] float playerJumpSpeed = 10f;
@@ -98,6 +98,7 @@ public class Player : MonoBehaviour
         }
         transform.localScale = characterScale;
     }
+}
 
     //private IEnumerator AttackWithWeapon()
     //{

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class LevelExit : MonoBehaviour
+public class LevelLoader : MonoBehaviour
 {
     [SerializeField] float LevelLoadDelay = 2f;
     [SerializeField] float LevelSlowMotionSpeed = 0.2f;
