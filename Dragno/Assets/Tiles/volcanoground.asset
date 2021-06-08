@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 13312, guid: 0000000000000000e000000000000000, type: 0}
-  m_Name: volcanoarcsbg_22
+  m_Name: volcanoground
   m_EditorClassIdentifier: 
-  m_Sprite: {fileID: 21300044, guid: 6736ae83e4af9864aa3566168b7cf6b7, type: 3}
+  m_Sprite: {fileID: 21300000, guid: c1c874fed9a97b74590dd916b7b863d2, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_Transform:
     e00: 1
