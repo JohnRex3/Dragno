@@ -2,11 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-    [SerializeField] int Value = ItemValue
 public class Currency : MonoBehaviour
 
 {
     // Start is called before the first frame update
+    [SerializeField] int Value = 1;
     void Start()
     {
         
@@ -16,5 +16,13 @@ public class Currency : MonoBehaviour
     void Update()
     {
         
+    }
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if(collision.gameObject.GetComponent<PlayerMovement>() != null)
+        {
+            GameObject.Find("GameSession").GetComponent<GameSession>().AddToScore(Value);
+            Destroy(gameObject);
+        }
     }
 }

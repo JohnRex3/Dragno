@@ -31,7 +31,7 @@ public class GameSession : MonoBehaviour
     public void Start()
     {
         livesText.text = playerLives.ToString();
-        scoreText.text = scoreText.ToString() + Currency;
+        scoreText.text = playerScore.ToString();
     }
 
     public void AddToScore(int pointsToAdd)

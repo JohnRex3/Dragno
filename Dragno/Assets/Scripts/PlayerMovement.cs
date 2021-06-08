@@ -98,13 +98,21 @@ public class PlayerMovement : MonoBehaviour
         }
         transform.localScale = characterScale;
     }
+
+
+    private void AttackWithWeapon()
+    {
+        /*myWeapon.enabled = true;
+        yield return new WaitForSecondsRealtime(1);
+        myWeapon.enabled = false;
+        */
+        float distance = 1;
+        RaycastHit2D hit = Physics2D.Raycast(transform.position, new Vector3(1,0,0), distance);
+        if(hit.collider != null)
+        {
+            //do stuff
+        }
+  
+    }
 }
-
-    //private IEnumerator AttackWithWeapon()
-    //{
-    //   myWeapon.enabled = true;
-    // yield return new WaitForSecondsRealtime(1);
-    //myWeapon.enabled = false;
-
-//    }
 
