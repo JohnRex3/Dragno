@@ -1,0 +1,15 @@
+Item Descriptions:
+
+
+For Keys:
+"A mysterious key that you found. What will it unlock?"
+
+
+Sword (not upgraded):
+"Your trusty sword. Click to attack with it."
+
+
+Sword (Upgraded):
+"Your trusty sword, now reforged to be stronger than ever. Deals double the damage that it did previously. Click to attack with it."
+
+
