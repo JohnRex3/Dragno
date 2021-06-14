@@ -1,0 +1,7 @@
+Dialogue:
+
+
+
+Shopkeeper:
+
+"Hello there, traveler! What can I do for you?"
