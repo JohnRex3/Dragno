@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -40,8 +41,13 @@ public class Enemy : MonoBehaviour
         return transform.localScale.x > 0;
     }
 
+    internal void TakeDamage(object damage)
+    {
+        throw new NotImplementedException();
+    }
+
     private void OnTriggerExit2D(Collider2D collision)
-    // make sure to set enemy box collider slightly in the ground for this to work.
+    
     {
         if (isFacingRight())
         {
@@ -60,9 +66,9 @@ public class Enemy : MonoBehaviour
         {
             Destroy(gameObject);
         }
-        //if (myCircleCollider2D.IsTouchingLayers(LayerMask.GetMask("Player", "Place Holder For Player Weapon Mask"))) // add mask for player weapons later
-        //{
-        //    Destroy(gameObject);
-        //}
+        if (myCircleCollider2D.IsTouchingLayers(LayerMask.GetMask("Player", "Place Holder For Player Weapon Mask"))) // add mask for player weapons later
+        {
+            Destroy(gameObject);
+        }
     }
 }

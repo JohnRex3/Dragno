@@ -11,7 +11,6 @@ public class GameSession : MonoBehaviour
 
     [SerializeField] Text livesText;
     [SerializeField] Text scoreText;
-    
 
 
 
@@ -64,5 +63,10 @@ public class GameSession : MonoBehaviour
     {
         SceneManager.LoadScene(0);
         Destroy(gameObject);
+    }
+
+    private void armor()
+    {
+
     }
 }

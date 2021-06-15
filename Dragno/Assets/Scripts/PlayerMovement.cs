@@ -2,11 +2,15 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class PlayerMovement : MonoBehaviour
 {
     [SerializeField] float playerRunSpeed = 5f;
     [SerializeField] float playerJumpSpeed = 10f;
+    [SerializeField] int Damage = 1;
+    [SerializeField] public int armor = 1;
+    [SerializeField] int health = 5;
 
     public bool isAlive = true;
 
@@ -14,7 +18,7 @@ public class PlayerMovement : MonoBehaviour
     Animator myAnimator;
     CapsuleCollider2D myCapsuleCollider2D;
     BoxCollider2D myFeet;
-    CircleCollider2D myWeapon; // make sure to set this on its own layer //
+    CircleCollider2D Weapon;
 
     Vector3 characterScale;
     float characterScaleX;
@@ -25,7 +29,7 @@ public class PlayerMovement : MonoBehaviour
         myAnimator = GetComponent<Animator>();
         myCapsuleCollider2D = GetComponent<CapsuleCollider2D>();
         myFeet = GetComponent<BoxCollider2D>();
-        myWeapon = GetComponent<CircleCollider2D>();
+        Weapon = GetComponent<CircleCollider2D>();
         characterScale = transform.localScale;
         characterScaleX = characterScale.x;
     }
@@ -47,7 +51,7 @@ public class PlayerMovement : MonoBehaviour
         myRigidBody.velocity = playerVelocity;
 
         bool playerHasHorizontalSpeed = Mathf.Abs(myRigidBody.velocity.x) > Mathf.Epsilon;
-        //myAnimator.SetBool("Running", playerHasHorizontalSpeed); put back in when we have a running animation
+        myAnimator.SetBool("Running", playerHasHorizontalSpeed);
 
     }
 
@@ -64,9 +68,9 @@ public class PlayerMovement : MonoBehaviour
 
     private void Attack()
     {
-        if (Input.GetMouseButtonDown(0)) //Sword Attack
+        if (Input.GetMouseButtonDown(0))
         {
-            //StartCoroutine(AttackWithWeapon()); 
+            AttackWithWeapon();
         }
 
     }
@@ -75,7 +79,18 @@ public class PlayerMovement : MonoBehaviour
     {
         if (myCapsuleCollider2D.IsTouchingLayers(LayerMask.GetMask("Enemies", "Hazards")))
         {
-            Die();
+
+            if (armor >= Damage)
+            {
+                Damage = 1;
+            }
+            health -= Damage;
+            if(health >= 0)
+            {
+                Die();
+            }
+            
+            
         }
     }
 
@@ -102,17 +117,27 @@ public class PlayerMovement : MonoBehaviour
 
     private void AttackWithWeapon()
     {
-        /*myWeapon.enabled = true;
+        /*Weapon.enabled = true;
         yield return new WaitForSecondsRealtime(1);
-        myWeapon.enabled = false;
+        Weapon.enabled = false;
         */
         float distance = 1;
-        RaycastHit2D hit = Physics2D.Raycast(transform.position, new Vector3(1,0,0), distance);
-        if(hit.collider != null)
+        RaycastHit2D hit = Physics2D.Raycast(transform.position, new Vector3(1, 0, 0), distance);
+        if (hit.collider != null)
         {
             //do stuff
         }
-  
     }
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.tag == "Armor")
+        {
+            armor++;
+            Destroy(collision.gameObject);
+        }
+
+    }
+
+
 }
 
